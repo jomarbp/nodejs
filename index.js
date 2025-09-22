@@ -56,3 +56,25 @@ app.use((req, res)=>{
         message: 'La ruta ${req.originalUrl} no existe en esta API'
     });
 });
+
+async function iniciarServidor() {
+    try{
+        console.log('Conectando a la base de datos...');
+        await db.sequelize.authenticate();
+        console.log('Conexión a MySQL exitosa...');
+
+        await db.sequelize.sync({ force: false });
+        console.log('Modelos sincronizados a la base de datos...');
+
+        app.listen(PORT, ()=>{
+            console.log('Servidor corriendo en http://localhost:${PORT}');
+            console.log('Ambiente: ${process.env.NODE_ENV || "development" }');
+            console.log('Base de datos: ${process.env.DB_NAME}');
+        });
+
+    }catch(error){
+        console.log('Error al iniciar el servidor',error.message);
+        process.exit(1);
+    }
+}
+iniciarServidor();
