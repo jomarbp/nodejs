@@ -23,3 +23,29 @@ app.use((req, res, next)=>{
     console.log('[${new Date().toISOString()}] ${req.method} ${req.url}');
     next();
 })
+
+//RUTAS
+app.get('/',(req, res)=>{
+    res.json({
+        message: 'Api funcionando correctamente :)',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
+app.get('/cabecerabd',async(req,res)=>{
+try{
+    await db.sequelize.authenticate();
+    res.json({
+        status: 'OK',
+        database: 'Conexión Exitosa',
+        timestamp: new Date().toISOString()
+    });
+}catch(error){
+    res.status(500).json({
+        status: 'ERROR',
+        database: 'Error de conexión a la bd',
+        timestamp: new Date().toISOString()
+    });
+}
+});
