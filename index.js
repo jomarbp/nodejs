@@ -45,7 +45,7 @@ try{
     res.status(500).json({
         status: 'ERROR',
         database: 'Error de conexión a la bd',
-        timestamp: new Date().toISOString()
+        error: error.message
     });
 }
 });
