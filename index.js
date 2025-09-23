@@ -20,7 +20,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next)=>{
-    console.log('[${new Date().toISOString()}] ${req.method} ${req.url}');
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
     next();
 })
 
@@ -53,7 +53,7 @@ try{
 app.use((req, res)=>{
     res.status(404).json({
         error: 'Ruta no encontrada',
-        message: 'La ruta ${req.originalUrl} no existe en esta API'
+        message: `La ruta ${req.originalUrl} no existe en esta API`
     });
 });
 
@@ -67,9 +67,9 @@ async function iniciarServidor() {
         console.log('Modelos sincronizados a la base de datos...');
 
         app.listen(PORT, ()=>{
-            console.log('Servidor corriendo en http://localhost:${PORT}');
-            console.log('Ambiente: ${process.env.NODE_ENV || "development" }');
-            console.log('Base de datos: ${process.env.DB_NAME}');
+            console.log(`Servidor corriendo en http://localhost:${PORT}`);
+            console.log(`Ambiente: ${process.env.NODE_ENV || "development" }`);
+            console.log(`Base de datos: ${process.env.DB_NAME}`);
         });
 
     }catch(error){
