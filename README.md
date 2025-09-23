@@ -13,6 +13,7 @@ npx sequelize-cli seed:generate --name demo-usuarios
 
 ## edita el archivo generado en seeders/
 
+```
 'use strict';
 const bcrypt = require('bcryptjs');
 
@@ -62,5 +63,7 @@ module.exports = {
     await queryInterface.bulkDelete('Usuarios', null, {});
   }
 };
+```
 
+## crear usuarios
 npm run db:seed
