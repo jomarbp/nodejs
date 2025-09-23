@@ -6,6 +6,9 @@ const helmet = require('helmet');
 
 const db = require('./models');
 
+//importar rutas
+const usuarioRouter = require('./routes/usuarios');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -49,6 +52,8 @@ try{
     });
 }
 });
+
+app.use('/api/usuario',usuarioRouter);
 
 app.use((req, res)=>{
     res.status(404).json({
