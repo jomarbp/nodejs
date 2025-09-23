@@ -6,3 +6,7 @@ npx sequelize-cli model:generate --name Usuario --attributes nombre:string,email
 ## Ejecutar la migración
 
 npm run db:migrate
+
+## crear usuarios
+
+npx sequelize-cli seed:generate --name demo-usuarios
