@@ -10,4 +10,5 @@ npm run db:migrate
 ## crear usuarios
 
 npx sequelize-cli seed:generate --name demo-usuarios
+
 npm run db:seed
