@@ -8,3 +8,5 @@ const {
 
 //RUTAS
 router.get('/',obtenerUsuarios);
+
+module.exports = router;
